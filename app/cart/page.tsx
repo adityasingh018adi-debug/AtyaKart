@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { formatPrice } from "@/lib/utils";
 import Button from "@/components/ui/Button";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function CartPage() {
   const cart = useStore((s) => s.cart);
@@ -53,9 +55,9 @@ export default function CartPage() {
             >
               <Link
                 href={`/product/${item.product.id}`}
-                className="flex h-28 w-24 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8] text-4xl"
+                className="relative h-28 w-24 shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8]"
               >
-                {item.product.emoji}
+                <Image src={item.product.image} alt={item.product.name} fill sizes="96px" className="object-cover" />
               </Link>
               <div className="flex flex-1 flex-col justify-between">
                 <div>
@@ -122,12 +124,14 @@ export default function CartPage() {
             <span className="font-semibold text-dark">Total</span>
             <span className="font-heading text-xl font-extrabold text-dark">{formatPrice(total)}</span>
           </div>
-          <Link href="/checkout" className="block">
-            <Button size="lg" className="w-full">
-              Proceed to Checkout
-              <ArrowRight size={16} />
-            </Button>
-          </Link>
+          <MagneticButton className="block w-full" strength={0.18}>
+            <Link href="/checkout" className="block">
+              <Button size="lg" className="w-full">
+                Proceed to Checkout
+                <ArrowRight size={16} />
+              </Button>
+            </Link>
+          </MagneticButton>
         </div>
       </div>
     </div>

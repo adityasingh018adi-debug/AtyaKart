@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import Button from "@/components/ui/Button";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 const tiles = [
   { slug: "men", label: "Men", emoji: "👔", color: "from-[#1f2937] to-[#374151]" },
@@ -34,16 +35,20 @@ export default function HeroSection({ onOpenAI }: { onOpenAI: () => void }) {
             scan your photo to recommend the exact fit and styles made for you.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button size="lg" onClick={onOpenAI}>
-              <Sparkles size={18} />
-              Try AI Fitting Room
-            </Button>
-            <Link href="/category/zeng">
-              <Button size="lg" variant="outline">
-                Explore ZenG
-                <ArrowRight size={16} />
+            <MagneticButton>
+              <Button size="lg" onClick={onOpenAI}>
+                <Sparkles size={18} />
+                Try AI Fitting Room
               </Button>
-            </Link>
+            </MagneticButton>
+            <MagneticButton>
+              <Link href="/category/zeng">
+                <Button size="lg" variant="outline">
+                  Explore ZenG
+                  <ArrowRight size={16} />
+                </Button>
+              </Link>
+            </MagneticButton>
           </div>
         </motion.div>
 

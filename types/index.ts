@@ -12,6 +12,7 @@ export interface Product {
   reviewCount: number;
   badge: string;
   emoji: string;
+  image: string;
   isNew: boolean;
   tags: string[];
   sizes: string[];

@@ -393,8 +393,8 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                           onClick={onClose}
                           className="w-36 shrink-0 overflow-hidden rounded-2xl border border-dark/10 bg-white"
                         >
-                          <div className="flex aspect-[3/4] items-center justify-center bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8] text-5xl">
-                            {p.emoji}
+                          <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8]">
+                            <Image src={p.image} alt={p.name} fill sizes="144px" className="object-cover" />
                           </div>
                           <div className="space-y-1 p-3">
                             <p className="line-clamp-1 text-xs font-bold text-dark">{p.name}</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Heart, Star, Truck, RotateCcw, ShieldCheck } from "lucide-react";
 import { Product } from "@/types";
 import { useStore } from "@/lib/store";
@@ -8,6 +9,7 @@ import { useToast } from "@/components/ui/Toast";
 import { formatPrice, cn } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
+import AddToCartButton from "@/components/ui/AddToCartButton";
 
 export default function ProductDetailClient({ product }: { product: Product }) {
   const [size, setSize] = useState<string | null>(null);
@@ -24,7 +26,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
   const handleAddToCart = () => {
     if (!size) {
       show("Please select a size first");
-      return;
+      return false;
     }
     addToCart(product, size);
     show(`Added ${product.name} (${size}) to cart`);
@@ -32,8 +34,15 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
   return (
     <div className="grid gap-10 lg:grid-cols-2">
-      <div className="relative flex aspect-[3/4] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8] text-[10rem]">
-        {product.emoji}
+      <div className="relative aspect-[3/4] overflow-hidden rounded-3xl bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8]">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          priority
+          className="object-cover"
+        />
         <div className="absolute left-4 top-4 flex flex-col gap-1.5">
           <Badge label={product.badge} />
           {product.isNew && product.badge !== "NEW" && <Badge label="NEW" />}
@@ -85,9 +94,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
         </div>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button size="lg" onClick={handleAddToCart} className="flex-1 sm:flex-none">
-            Add to Bag
-          </Button>
+          <AddToCartButton onAdd={handleAddToCart} className="flex-1 sm:flex-none" />
           <Button
             size="lg"
             variant="outline"

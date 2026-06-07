@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, Suspense } from "react";
-import { Search, Heart, ShoppingBag, Menu, X, Sparkles, User, LogOut, ShieldCheck } from "lucide-react";
+import { Search, Heart, ShoppingBag, Menu, X, Sparkles, User, LogOut, ShieldCheck, Home } from "lucide-react";
 import { useSession, signOut } from "next-auth/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
@@ -136,6 +137,14 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
           Atya<span className="text-dark">Kart</span>
         </Link>
 
+        <Link
+          href="/"
+          className="ml-1 hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold text-dark/70 transition hover:bg-dark/5 hover:text-primary lg:flex"
+        >
+          <Home size={16} />
+          Home
+        </Link>
+
         <div className="ml-2 hidden flex-1 items-center lg:flex">
           <Suspense fallback={<div className="h-9 w-full max-w-md rounded-full border border-dark/15 bg-white" />}>
             <SearchBar />
@@ -155,20 +164,36 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
 
           <Link href="/wishlist" className="relative rounded-full p-2.5 hover:bg-dark/5" aria-label="Wishlist">
             <Heart size={20} />
-            {mounted && wishlistCount > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white">
-                {wishlistCount}
-              </span>
-            )}
+            <AnimatePresence>
+              {mounted && wishlistCount > 0 && (
+                <motion.span
+                  key={wishlistCount}
+                  initial={{ scale: 0.4, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 14 }}
+                  className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"
+                >
+                  {wishlistCount}
+                </motion.span>
+              )}
+            </AnimatePresence>
           </Link>
 
           <Link href="/cart" className="relative rounded-full p-2.5 hover:bg-dark/5" aria-label="Cart">
             <ShoppingBag size={20} />
-            {mounted && cartCount > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white">
-                {cartCount}
-              </span>
-            )}
+            <AnimatePresence>
+              {mounted && cartCount > 0 && (
+                <motion.span
+                  key={cartCount}
+                  initial={{ scale: 0.4, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 500, damping: 14 }}
+                  className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-white"
+                >
+                  {cartCount}
+                </motion.span>
+              )}
+            </AnimatePresence>
           </Link>
 
           {mounted && <AccountMenu />}
@@ -181,6 +206,7 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
             <SearchBar />
           </Suspense>
           {[
+            { href: "/", label: "Home" },
             { href: "/category/men", label: "Men" },
             { href: "/category/women", label: "Women" },
             { href: "/category/kids", label: "Kids" },
