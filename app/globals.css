@@ -24,18 +24,6 @@ body {
   font-family: var(--font-inter), sans-serif;
 }
 
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a,
-  button,
-  input,
-  [role="button"] {
-    cursor: none;
-  }
-}
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

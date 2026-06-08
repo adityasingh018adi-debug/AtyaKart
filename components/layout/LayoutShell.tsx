@@ -8,7 +8,7 @@ import Toast from "@/components/ui/Toast";
 import AITryOnModal from "@/components/ai/AITryOnModal";
 import ChatAssistant from "@/components/ai/ChatAssistant";
 import SmoothScroll from "@/components/layout/SmoothScroll";
-import CustomCursor from "@/components/layout/CustomCursor";
+import PWARegister from "@/components/layout/PWARegister";
 
 const AIModalContext = createContext<() => void>(() => {});
 export const useAIModal = () => useContext(AIModalContext);
@@ -20,7 +20,7 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
   return (
     <AIModalContext.Provider value={openAI}>
       <SmoothScroll>
-        <CustomCursor />
+        <PWARegister />
         <Navbar onOpenAI={openAI} />
         <CategoryBar />
         <main className="flex-1">{children}</main>
