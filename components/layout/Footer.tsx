@@ -14,19 +14,19 @@ const columns = [
   {
     title: "Help",
     links: [
-      { label: "Track Order", href: "#" },
-      { label: "Shipping & Returns", href: "#" },
-      { label: "Size Guide", href: "#" },
-      { label: "Contact Us", href: "#" },
+      { label: "Track Order", href: "/track-order" },
+      { label: "Shipping & Returns", href: "/shipping-returns" },
+      { label: "Size Guide", href: "/size-guide" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
   {
     title: "About AtyaKart",
     links: [
-      { label: "Our Story", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "AI Fitting Room", href: "#" },
-      { label: "Sustainability", href: "#" },
+      { label: "Our Story", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "AI Fitting Room", href: "/ai-fitting-room" },
+      { label: "Sustainability", href: "/sustainability" },
     ],
   },
 ];
