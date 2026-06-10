@@ -14,6 +14,7 @@ const columns = [
   {
     title: "Help",
     links: [
+      { label: "Help Center", href: "/help" },
       { label: "Track Order", href: "/track-order" },
       { label: "Shipping & Returns", href: "/shipping-returns" },
       { label: "Size Guide", href: "/size-guide" },
