@@ -9,6 +9,7 @@ import AIBanner from "@/components/home/AIBanner";
 import ProductsSection from "@/components/home/ProductsSection";
 import AIRecommended from "@/components/home/AIRecommended";
 import FlashSale from "@/components/home/FlashSale";
+import BudgetPicks from "@/components/home/BudgetPicks";
 import NewArrivals from "@/components/home/NewArrivals";
 import RecentlyViewed from "@/components/home/RecentlyViewed";
 import CompleteTheLook from "@/components/home/CompleteTheLook";
@@ -24,6 +25,7 @@ export default function Home() {
       <DealsStrip />
       <TrustStrip />
       <CategoryShowcase />
+      <BudgetPicks />
       <ProductsSection />
       <AIRecommended />
       <FlashSale />
