@@ -29,6 +29,12 @@ const cards = [
     desc: "Organic Cotton · Linen Co-ords · Wellness Loungewear",
     emoji: "🌿",
   },
+  {
+    slug: "beauty",
+    title: "Beauty & Personal Care",
+    desc: "Skincare · Makeup · Hair Care · Body Care",
+    emoji: "🧴",
+  },
 ];
 
 export default function CategoryShowcase() {
@@ -39,7 +45,7 @@ export default function CategoryShowcase() {
           Shop by Edit
         </h2>
       </div>
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {cards.map((c, i) => (
           <motion.div
             key={c.slug}

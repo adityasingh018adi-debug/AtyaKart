@@ -9,6 +9,7 @@ const categories = [
   { slug: "women", label: "Women", emoji: "👗" },
   { slug: "kids", label: "Kids", emoji: "🧸" },
   { slug: "zeng", label: "ZenG", emoji: "🌿" },
+  { slug: "beauty", label: "Beauty", emoji: "🧴" },
 ];
 
 export default function CategoryBar() {

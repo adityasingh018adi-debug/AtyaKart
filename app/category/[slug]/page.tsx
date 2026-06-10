@@ -23,6 +23,11 @@ const categoryInfo: Record<string, { title: string; desc: string; emoji: string 
     desc: "Organic Cotton · Linen Co-ords · Wellness Loungewear",
     emoji: "🌿",
   },
+  beauty: {
+    title: "Beauty & Personal Care",
+    desc: "Skincare · Makeup · Hair Care · Body Care",
+    emoji: "🧴",
+  },
 };
 
 export function generateStaticParams() {

@@ -9,6 +9,7 @@ const columns = [
       { label: "Women", href: "/category/women" },
       { label: "Kids", href: "/category/kids" },
       { label: "ZenG", href: "/category/zeng" },
+      { label: "Beauty & Personal Care", href: "/category/beauty" },
     ],
   },
   {
