@@ -8,12 +8,22 @@ interface CoinEntry {
   date: string;
 }
 
+function generateReferralCode() {
+  return Math.random().toString(36).slice(2, 8).toUpperCase();
+}
+
 interface StoreState {
   cart: CartItem[];
   wishlist: Product[];
   recentlyViewed: string[];
   atyaCoins: number;
   coinHistory: CoinEntry[];
+  reviewedProducts: string[];
+  hasReviewed: (productId: string) => boolean;
+  markReviewed: (productId: string) => void;
+  referralCode: string;
+  referralBonusClaimed: boolean;
+  claimReferralBonus: () => boolean;
   addRecentlyViewed: (id: string) => void;
   addToCart: (product: Product, size: string) => void;
   removeFromCart: (id: string, size: string) => void;
@@ -35,6 +45,31 @@ export const useStore = create<StoreState>()(
       recentlyViewed: [],
       atyaCoins: 0,
       coinHistory: [],
+      reviewedProducts: [],
+      referralCode: generateReferralCode(),
+      referralBonusClaimed: false,
+
+      hasReviewed: (productId) => get().reviewedProducts.includes(productId),
+
+      markReviewed: (productId) =>
+        set((state) => ({
+          reviewedProducts: state.reviewedProducts.includes(productId)
+            ? state.reviewedProducts
+            : [...state.reviewedProducts, productId],
+        })),
+
+      claimReferralBonus: () => {
+        if (get().referralBonusClaimed) return false;
+        set((state) => ({
+          referralBonusClaimed: true,
+          atyaCoins: state.atyaCoins + 50,
+          coinHistory: [
+            { label: "Referral welcome bonus", amount: 50, date: new Date().toISOString() },
+            ...state.coinHistory,
+          ].slice(0, 20),
+        }));
+        return true;
+      },
 
       earnCoins: (amount, label) =>
         set((state) => ({
@@ -124,6 +159,9 @@ export const useStore = create<StoreState>()(
         recentlyViewed: state.recentlyViewed,
         atyaCoins: state.atyaCoins,
         coinHistory: state.coinHistory,
+        reviewedProducts: state.reviewedProducts,
+        referralCode: state.referralCode,
+        referralBonusClaimed: state.referralBonusClaimed,
       }),
     }
   )

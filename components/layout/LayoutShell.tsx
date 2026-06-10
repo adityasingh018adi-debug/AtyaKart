@@ -9,6 +9,7 @@ import AITryOnModal from "@/components/ai/AITryOnModal";
 import ChatAssistant from "@/components/ai/ChatAssistant";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import PWARegister from "@/components/layout/PWARegister";
+import ReferralBanner from "@/components/layout/ReferralBanner";
 
 const AIModalContext = createContext<() => void>(() => {});
 export const useAIModal = () => useContext(AIModalContext);
@@ -21,6 +22,7 @@ export default function LayoutShell({ children }: { children: ReactNode }) {
     <AIModalContext.Provider value={openAI}>
       <SmoothScroll>
         <PWARegister />
+        <ReferralBanner />
         <Navbar onOpenAI={openAI} />
         <CategoryBar />
         <main className="flex-1">{children}</main>

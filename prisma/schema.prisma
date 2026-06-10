@@ -88,3 +88,14 @@ model Order {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model Review {
+  id         String   @id @default(cuid())
+  productId  String
+  authorName String
+  rating     Int
+  comment    String
+  createdAt  DateTime @default(now())
+
+  @@index([productId])
+}

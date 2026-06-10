@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getProduct, products } from "@/lib/products";
 import ProductDetailClient from "./ProductDetailClient";
+import ProductReviews from "@/components/product/ProductReviews";
 import ProductGrid from "@/components/product/ProductGrid";
 
 export function generateStaticParams() {
@@ -19,6 +20,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <ProductDetailClient product={product} />
+
+      <ProductReviews productId={product.id} baseRating={product.rating} baseReviewCount={product.reviewCount} />
 
       {related.length > 0 && (
         <section className="mt-16">

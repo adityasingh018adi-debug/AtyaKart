@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Coins, Gift, ShoppingBag, Sparkles, Star, Users } from "lucide-react";
+import { Coins, Copy, Gift, ShoppingBag, Sparkles, Star, Users } from "lucide-react";
 import InfoPage from "@/components/ui/InfoPage";
 import Button from "@/components/ui/Button";
 import { useStore } from "@/lib/store";
@@ -25,6 +25,7 @@ export default function RewardsPage() {
   const atyaCoins = useStore((s) => s.atyaCoins);
   const coinHistory = useStore((s) => s.coinHistory);
   const redeemCoins = useStore((s) => s.redeemCoins);
+  const referralCode = useStore((s) => s.referralCode);
   const { show } = useToast();
   const [hydrated, setHydrated] = useState(false);
 
@@ -50,6 +51,38 @@ export default function RewardsPage() {
             <p className="mt-1 text-sm text-fg/60">{w.detail}</p>
           </div>
         ))}
+      </div>
+
+      <h2>Refer friends, earn more</h2>
+      <div className="not-prose rounded-2xl border border-dark/10 p-4">
+        <div className="flex items-center gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <Users size={18} />
+          </span>
+          <div>
+            <p className="font-semibold text-fg">Share your referral link</p>
+            <p className="mt-1 text-sm text-fg/60">
+              Friends who join using your link get 50 welcome AtyaCoins instantly.
+            </p>
+          </div>
+        </div>
+        <div className="mt-3 flex items-center gap-2 rounded-xl border border-dark/10 bg-dark/[0.02] px-3 py-2.5">
+          <code className="flex-1 truncate text-xs text-fg/70">
+            atyakart.in/?ref={referralCode}
+          </code>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={() => {
+              navigator.clipboard.writeText(`https://atyakart.in/?ref=${referralCode}`);
+              show("Referral link copied!");
+            }}
+          >
+            <Copy size={14} />
+            Copy
+          </Button>
+        </div>
       </div>
 
       <h2>Redeem your coins</h2>
