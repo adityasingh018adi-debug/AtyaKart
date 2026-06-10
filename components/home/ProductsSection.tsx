@@ -27,10 +27,10 @@ export default function ProductsSection() {
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="font-heading text-2xl font-extrabold tracking-tight text-dark sm:text-3xl">
+          <h2 className="font-heading text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
             Picked for You
           </h2>
-          <p className="mt-1 text-sm text-dark/50">Trending styles across all AtyaKart edits</p>
+          <p className="mt-1 text-sm text-fg/50">Trending styles across all AtyaKart edits</p>
         </div>
         <FilterChips options={filters} active={active} onChange={setActive} />
       </div>

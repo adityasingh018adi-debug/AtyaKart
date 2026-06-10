@@ -2,10 +2,18 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { CartItem, Product } from "@/types";
 
+interface CoinEntry {
+  label: string;
+  amount: number;
+  date: string;
+}
+
 interface StoreState {
   cart: CartItem[];
   wishlist: Product[];
   recentlyViewed: string[];
+  atyaCoins: number;
+  coinHistory: CoinEntry[];
   addRecentlyViewed: (id: string) => void;
   addToCart: (product: Product, size: string) => void;
   removeFromCart: (id: string, size: string) => void;
@@ -15,6 +23,8 @@ interface StoreState {
   isWishlisted: (id: string) => boolean;
   cartTotal: () => number;
   cartCount: () => number;
+  earnCoins: (amount: number, label: string) => void;
+  redeemCoins: (amount: number) => boolean;
 }
 
 export const useStore = create<StoreState>()(
@@ -23,6 +33,30 @@ export const useStore = create<StoreState>()(
       cart: [],
       wishlist: [],
       recentlyViewed: [],
+      atyaCoins: 0,
+      coinHistory: [],
+
+      earnCoins: (amount, label) =>
+        set((state) => ({
+          atyaCoins: state.atyaCoins + amount,
+          coinHistory: [
+            { label, amount, date: new Date().toISOString() },
+            ...state.coinHistory,
+          ].slice(0, 20),
+        })),
+
+      redeemCoins: (amount) => {
+        const state = get();
+        if (state.atyaCoins < amount) return false;
+        set({
+          atyaCoins: state.atyaCoins - amount,
+          coinHistory: [
+            { label: "Redeemed for discount", amount: -amount, date: new Date().toISOString() },
+            ...state.coinHistory,
+          ].slice(0, 20),
+        });
+        return true;
+      },
 
       addRecentlyViewed: (id) =>
         set((state) => ({
@@ -88,6 +122,8 @@ export const useStore = create<StoreState>()(
         cart: state.cart,
         wishlist: state.wishlist,
         recentlyViewed: state.recentlyViewed,
+        atyaCoins: state.atyaCoins,
+        coinHistory: state.coinHistory,
       }),
     }
   )

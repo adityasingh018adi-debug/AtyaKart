@@ -15,7 +15,7 @@ export default function CategoryBar() {
   const pathname = usePathname();
 
   return (
-    <div className="border-b border-dark/10 bg-white">
+    <div className="border-b border-dark/10 bg-surface">
       <div className="mx-auto flex max-w-7xl items-center gap-1 overflow-x-auto px-4 scrollbar-none sm:px-6 lg:px-8">
         {categories.map((c) => {
           const href = `/category/${c.slug}`;
@@ -28,7 +28,7 @@ export default function CategoryBar() {
                 "flex shrink-0 items-center gap-1.5 border-b-2 px-4 py-3 text-sm font-semibold transition",
                 active
                   ? "border-primary text-primary"
-                  : "border-transparent text-dark/60 hover:text-dark"
+                  : "border-transparent text-fg/60 hover:text-fg"
               )}
             >
               <span>{c.emoji}</span>

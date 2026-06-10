@@ -35,7 +35,7 @@ export default function CategoryClient({ products }: { products: Product[] }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-dark/50">{sorted.length} products</p>
+        <p className="text-sm text-fg/50">{sorted.length} products</p>
         <FilterChips options={sortOptions} active={sort} onChange={setSort} />
       </div>
       <div className="mt-6">

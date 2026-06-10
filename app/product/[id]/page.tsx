@@ -22,7 +22,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
       {related.length > 0 && (
         <section className="mt-16">
-          <h2 className="font-heading text-2xl font-extrabold tracking-tight text-dark">
+          <h2 className="font-heading text-2xl font-extrabold tracking-tight text-fg">
             You may also like
           </h2>
           <div className="mt-6">

@@ -22,7 +22,7 @@ export default function TrackOrderPage() {
         className="not-prose flex flex-col gap-3 rounded-2xl border border-dark/10 bg-dark/[0.02] p-5 sm:flex-row sm:items-end"
       >
         <label className="flex-1 text-sm">
-          <span className="mb-1 block font-semibold text-dark">Order ID</span>
+          <span className="mb-1 block font-semibold text-fg">Order ID</span>
           <input
             required
             placeholder="e.g. AK-204871"
@@ -30,7 +30,7 @@ export default function TrackOrderPage() {
           />
         </label>
         <label className="flex-1 text-sm">
-          <span className="mb-1 block font-semibold text-dark">Email address</span>
+          <span className="mb-1 block font-semibold text-fg">Email address</span>
           <input
             required
             type="email"
@@ -53,7 +53,7 @@ export default function TrackOrderPage() {
       <h2>How tracking works</h2>
       <p>
         Once your order ships, you&apos;ll receive an email and SMS with a tracking link. You can
-        also check status anytime from <span className="font-semibold text-dark">My Orders</span>{" "}
+        also check status anytime from <span className="font-semibold text-fg">My Orders</span>{" "}
         in your account, or right here using your order ID and email.
       </p>
       <ul>

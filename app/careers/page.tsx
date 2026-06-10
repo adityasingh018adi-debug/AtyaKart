@@ -29,10 +29,10 @@ export default function CareersPage() {
             className="flex flex-col gap-1 rounded-2xl border border-dark/10 p-4 sm:flex-row sm:items-center sm:justify-between"
           >
             <div>
-              <p className="font-semibold text-dark">{o.role}</p>
-              <p className="text-xs text-dark/50">{o.team}</p>
+              <p className="font-semibold text-fg">{o.role}</p>
+              <p className="text-xs text-fg/50">{o.team}</p>
             </div>
-            <span className="rounded-full bg-dark/5 px-3 py-1 text-xs font-medium text-dark/60">
+            <span className="rounded-full bg-dark/5 px-3 py-1 text-xs font-medium text-fg/60">
               {o.location}
             </span>
           </div>
@@ -40,10 +40,10 @@ export default function CareersPage() {
       </div>
 
       <h2>How to apply</h2>
-      <p className="not-prose flex items-center gap-2 text-sm text-dark/70">
+      <p className="not-prose flex items-center gap-2 text-sm text-fg/70">
         <Mail size={16} className="text-primary" />
         Send your resume and a short note to{" "}
-        <span className="font-semibold text-dark">careers@atyakart.in</span> with the role you&apos;re
+        <span className="font-semibold text-fg">careers@atyakart.in</span> with the role you&apos;re
         interested in.
       </p>
     </InfoPage>

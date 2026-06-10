@@ -75,7 +75,7 @@ export default function ChatAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-5 z-50 flex h-[28rem] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-3xl border border-dark/10 bg-white shadow-2xl"
+            className="fixed bottom-24 right-5 z-50 flex h-[28rem] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-3xl border border-dark/10 bg-surface shadow-2xl"
           >
             <div className="flex items-center gap-2.5 bg-gradient-to-r from-primary to-accent px-4 py-3 text-white">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
@@ -95,7 +95,7 @@ export default function ChatAssistant() {
                     "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
                     m.role === "user"
                       ? "ml-auto bg-primary text-white"
-                      : "bg-dark/5 text-dark"
+                      : "bg-dark/5 text-fg"
                   )}
                 >
                   {m.content}
@@ -120,7 +120,7 @@ export default function ChatAssistant() {
                   <button
                     key={p}
                     onClick={() => send(p)}
-                    className="rounded-full border border-dark/15 px-2.5 py-1 text-xs font-medium text-dark/60 transition hover:border-primary/40 hover:text-primary"
+                    className="rounded-full border border-dark/15 px-2.5 py-1 text-xs font-medium text-fg/60 transition hover:border-primary/40 hover:text-primary"
                   >
                     {p}
                   </button>
@@ -139,7 +139,7 @@ export default function ChatAssistant() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask about styles, sizing, occasions…"
-                className="w-full rounded-full border border-dark/15 bg-white px-4 py-2 text-sm text-dark placeholder:text-dark/40 focus:border-primary/50 focus:outline-none"
+                className="w-full rounded-full border border-dark/15 bg-surface px-4 py-2 text-sm text-fg placeholder:text-fg/40 focus:border-primary/50 focus:outline-none"
               />
               <button
                 type="submit"

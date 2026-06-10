@@ -22,13 +22,13 @@ export default function SearchResults() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="flex items-center gap-2 text-dark/50">
+      <div className="flex items-center gap-2 text-fg/50">
         <SearchIcon size={16} />
         <p className="text-sm">
           {query ? (
             <>
               {results.length} result{results.length === 1 ? "" : "s"} for{" "}
-              <span className="font-semibold text-dark">&ldquo;{query}&rdquo;</span>
+              <span className="font-semibold text-fg">&ldquo;{query}&rdquo;</span>
             </>
           ) : (
             "Type something in the search bar to find products"

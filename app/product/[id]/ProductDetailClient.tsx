@@ -10,6 +10,7 @@ import { formatPrice, cn } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import AddToCartButton from "@/components/ui/AddToCartButton";
+import AuthenticityBadge from "@/components/product/AuthenticityBadge";
 
 export default function ProductDetailClient({ product }: { product: Product }) {
   const [size, setSize] = useState<string | null>(null);
@@ -50,12 +51,12 @@ export default function ProductDetailClient({ product }: { product: Product }) {
       </div>
 
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-dark/40">{product.brand}</p>
-        <h1 className="mt-1 font-heading text-3xl font-extrabold tracking-tight text-dark">
+        <p className="text-xs font-semibold uppercase tracking-wide text-fg/40">{product.brand}</p>
+        <h1 className="mt-1 font-heading text-3xl font-extrabold tracking-tight text-fg">
           {product.name}
         </h1>
 
-        <div className="mt-3 flex items-center gap-2 text-sm text-dark/60">
+        <div className="mt-3 flex items-center gap-2 text-sm text-fg/60">
           <span className="flex items-center gap-1 rounded bg-emerald-700 px-2 py-0.5 text-xs font-bold text-white">
             {product.rating} <Star size={11} className="fill-white" />
           </span>
@@ -63,18 +64,18 @@ export default function ProductDetailClient({ product }: { product: Product }) {
         </div>
 
         <div className="mt-4 flex items-baseline gap-3">
-          <span className="font-heading text-3xl font-extrabold text-dark">
+          <span className="font-heading text-3xl font-extrabold text-fg">
             {formatPrice(product.price)}
           </span>
-          <span className="text-base text-dark/40 line-through">{formatPrice(product.originalPrice)}</span>
+          <span className="text-base text-fg/40 line-through">{formatPrice(product.originalPrice)}</span>
           <span className="text-base font-bold text-primary">{product.discountPercent}% off</span>
         </div>
         <p className="mt-1 text-xs text-emerald-700">inclusive of all taxes</p>
 
-        <p className="mt-5 max-w-lg text-sm leading-relaxed text-dark/60">{product.description}</p>
+        <p className="mt-5 max-w-lg text-sm leading-relaxed text-fg/60">{product.description}</p>
 
         <div className="mt-6">
-          <p className="text-sm font-semibold text-dark">Select Size</p>
+          <p className="text-sm font-semibold text-fg">Select Size</p>
           <div className="mt-2 flex flex-wrap gap-2">
             {product.sizes.map((s) => (
               <button
@@ -84,7 +85,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                   "min-w-12 rounded-xl border px-4 py-2 text-sm font-semibold transition",
                   size === s
                     ? "border-primary bg-primary text-white"
-                    : "border-dark/15 bg-white text-dark/70 hover:border-dark/40"
+                    : "border-dark/15 bg-surface text-fg/70 hover:border-dark/40"
                 )}
               >
                 {s}
@@ -108,7 +109,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           </Button>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 gap-3 rounded-2xl border border-dark/10 bg-white p-4 sm:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-3 rounded-2xl border border-dark/10 bg-surface p-4 sm:grid-cols-3">
           {[
             { icon: Truck, label: "Free delivery", sub: "Orders above ₹999" },
             { icon: RotateCcw, label: "7-day returns", sub: "Easy & free" },
@@ -117,12 +118,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             <div key={f.label} className="flex items-center gap-2.5">
               <f.icon size={18} className="text-primary" />
               <div>
-                <p className="text-xs font-semibold text-dark">{f.label}</p>
-                <p className="text-[11px] text-dark/40">{f.sub}</p>
+                <p className="text-xs font-semibold text-fg">{f.label}</p>
+                <p className="text-[11px] text-fg/40">{f.sub}</p>
               </div>
             </div>
           ))}
         </div>
+
+        <AuthenticityBadge id={product.id} />
       </div>
     </div>
   );

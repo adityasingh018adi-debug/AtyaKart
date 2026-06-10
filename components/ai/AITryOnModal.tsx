@@ -145,7 +145,7 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
             exit={{ opacity: 0, y: 30, scale: 0.97 }}
             transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-t-3xl bg-white sm:rounded-3xl"
+            className="relative flex max-h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-t-3xl bg-surface sm:rounded-3xl"
           >
             <div className="flex items-center justify-between border-b border-dark/10 px-6 py-4">
               <div className="flex items-center gap-2">
@@ -153,15 +153,15 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                   <Sparkles size={17} />
                 </span>
                 <div>
-                  <p className="font-heading text-lg font-extrabold leading-tight text-dark">
+                  <p className="font-heading text-lg font-extrabold leading-tight text-fg">
                     AI Fitting Room
                   </p>
-                  <p className="text-xs text-dark/40">Find your perfect fit, instantly</p>
+                  <p className="text-xs text-fg/40">Find your perfect fit, instantly</p>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="rounded-full p-2 text-dark/40 hover:bg-dark/5 hover:text-dark"
+                className="rounded-full p-2 text-fg/40 hover:bg-dark/5 hover:text-fg"
                 aria-label="Close"
               >
                 <X size={20} />
@@ -209,10 +209,10 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                           <UploadCloud size={26} />
                         </span>
                         <div>
-                          <p className="text-sm font-semibold text-dark">
+                          <p className="text-sm font-semibold text-fg">
                             Drag & drop your photo, or click to upload
                           </p>
-                          <p className="mt-1 text-xs text-dark/40">
+                          <p className="mt-1 text-xs text-fg/40">
                             A clear, full-length photo works best · JPG, PNG, WEBP
                           </p>
                         </div>
@@ -234,7 +234,7 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                   {error && <p className="text-sm font-medium text-primary">{error}</p>}
 
                   <div>
-                    <p className="text-sm font-semibold text-dark">What&apos;s the occasion or style?</p>
+                    <p className="text-sm font-semibold text-fg">What&apos;s the occasion or style?</p>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {STYLE_TAGS.map((tag) => (
                         <button
@@ -244,7 +244,7 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                             "rounded-full border px-3.5 py-1.5 text-xs font-semibold transition",
                             selectedStyles.includes(tag)
                               ? "border-primary bg-primary text-white"
-                              : "border-dark/15 bg-white text-dark/60 hover:border-dark/30"
+                              : "border-dark/15 bg-surface text-fg/60 hover:border-dark/30"
                           )}
                         >
                           {tag}
@@ -254,7 +254,7 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                   </div>
 
                   <div>
-                    <p className="text-sm font-semibold text-dark">
+                    <p className="text-sm font-semibold text-fg">
                       Anything else? (optional)
                     </p>
                     <textarea
@@ -262,7 +262,7 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                       onChange={(e) => setNotes(e.target.value)}
                       placeholder="Describe your style or occasion — e.g. 'I prefer relaxed fits and earthy tones for a friend's wedding'"
                       rows={3}
-                      className="mt-2 w-full resize-none rounded-2xl border border-dark/15 bg-white px-4 py-3 text-sm focus:border-primary focus:outline-none"
+                      className="mt-2 w-full resize-none rounded-2xl border border-dark/15 bg-surface px-4 py-3 text-sm focus:border-primary focus:outline-none"
                     />
                   </div>
 
@@ -303,7 +303,7 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                               ? "bg-emerald-600 text-white"
                               : i === step
                               ? "bg-primary text-white"
-                              : "bg-dark/10 text-dark/40"
+                              : "bg-dark/10 text-fg/40"
                           )}
                         >
                           {i < step ? "✓" : i + 1}
@@ -311,7 +311,7 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                         <span
                           className={cn(
                             "text-sm transition",
-                            i <= step ? "font-semibold text-dark" : "text-dark/40"
+                            i <= step ? "font-semibold text-fg" : "text-fg/40"
                           )}
                         >
                           {label}
@@ -359,20 +359,20 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                       { label: "Fit Style", value: scan.fitStyle },
                       { label: "AI Score", value: `${scan.aiScore}%` },
                     ].map((stat) => (
-                      <div key={stat.label} className="rounded-2xl border border-dark/10 bg-white p-4 text-center">
-                        <p className="text-[11px] font-semibold uppercase tracking-wide text-dark/40">
+                      <div key={stat.label} className="rounded-2xl border border-dark/10 bg-surface p-4 text-center">
+                        <p className="text-[11px] font-semibold uppercase tracking-wide text-fg/40">
                           {stat.label}
                         </p>
-                        <p className="mt-1 font-heading text-lg font-extrabold text-dark">{stat.value}</p>
+                        <p className="mt-1 font-heading text-lg font-extrabold text-fg">{stat.value}</p>
                       </div>
                     ))}
                   </div>
 
                   <div>
-                    <p className="text-sm font-semibold text-dark">AI Styling Tips</p>
+                    <p className="text-sm font-semibold text-fg">AI Styling Tips</p>
                     <ul className="mt-2 space-y-1.5">
                       {scan.recommendations.map((tip, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-dark/60">
+                        <li key={i} className="flex items-start gap-2 text-sm text-fg/60">
                           <Star size={13} className="mt-0.5 shrink-0 fill-accent text-accent" />
                           {tip}
                         </li>
@@ -382,8 +382,8 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
 
                   <div>
                     <div className="flex items-center justify-between">
-                      <p className="text-sm font-semibold text-dark">Curated AtyaKart Picks for You</p>
-                      <span className="text-xs text-dark/40">Scroll for more →</span>
+                      <p className="text-sm font-semibold text-fg">Curated AtyaKart Picks for You</p>
+                      <span className="text-xs text-fg/40">Scroll for more →</span>
                     </div>
                     <div className="mt-3 flex gap-3 overflow-x-auto pb-2 scrollbar-none">
                       {recommended.map((p) => (
@@ -391,14 +391,14 @@ export default function AITryOnModal({ open, onClose }: { open: boolean; onClose
                           key={p.id}
                           href={`/product/${p.id}`}
                           onClick={onClose}
-                          className="w-36 shrink-0 overflow-hidden rounded-2xl border border-dark/10 bg-white"
+                          className="w-36 shrink-0 overflow-hidden rounded-2xl border border-dark/10 bg-surface"
                         >
                           <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8]">
                             <Image src={p.image} alt={p.name} fill sizes="144px" className="object-cover" />
                           </div>
                           <div className="space-y-1 p-3">
-                            <p className="line-clamp-1 text-xs font-bold text-dark">{p.name}</p>
-                            <p className="text-xs font-extrabold text-dark">{formatPrice(p.price)}</p>
+                            <p className="line-clamp-1 text-xs font-bold text-fg">{p.name}</p>
+                            <p className="text-xs font-extrabold text-fg">{formatPrice(p.price)}</p>
                             <span className="inline-block rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
                               Size {scan.bestSize} match
                             </span>

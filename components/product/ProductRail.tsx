@@ -23,12 +23,12 @@ export default function ProductRail({
       <div className="flex items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2.5">
-            <h2 className="font-heading text-2xl font-extrabold tracking-tight text-dark sm:text-3xl">
+            <h2 className="font-heading text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
               {title}
             </h2>
             {accent}
           </div>
-          {subtitle && <p className="mt-1 text-sm text-dark/50">{subtitle}</p>}
+          {subtitle && <p className="mt-1 text-sm text-fg/50">{subtitle}</p>}
         </div>
         {viewAllHref && (
           <Link

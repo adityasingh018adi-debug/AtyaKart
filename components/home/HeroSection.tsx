@@ -26,11 +26,11 @@ export default function HeroSection({ onOpenAI }: { onOpenAI: () => void }) {
             <Sparkles size={14} />
             New: AI Fitting Room — scan your photo, get your size
           </span>
-          <h1 className="mt-5 font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-dark sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-fg sm:text-5xl lg:text-6xl">
             Fashion for
             <span className="block text-primary">Every Story.</span>
           </h1>
-          <p className="mt-5 max-w-lg text-base text-dark/60 sm:text-lg">
+          <p className="mt-5 max-w-lg text-base text-fg/60 sm:text-lg">
             Shop curated Men&apos;s, Women&apos;s, Kids and ZenG wellness wear — then let our AI
             scan your photo to recommend the exact fit and styles made for you.
           </p>

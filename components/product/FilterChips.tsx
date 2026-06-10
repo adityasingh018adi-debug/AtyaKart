@@ -19,7 +19,7 @@ export default function FilterChips({ options, active, onChange }: FilterChipsPr
             "rounded-full border px-4 py-2 text-sm font-semibold transition",
             active === opt.value
               ? "border-primary bg-primary text-white"
-              : "border-dark/15 bg-white text-dark/70 hover:border-dark/40"
+              : "border-dark/15 bg-surface text-fg/70 hover:border-dark/40"
           )}
         >
           {opt.label}

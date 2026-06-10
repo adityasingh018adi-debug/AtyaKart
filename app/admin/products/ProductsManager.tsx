@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { Pencil, Trash2, Plus, X } from "lucide-react";
+import { Pencil, Trash2, Plus, X, Sparkles } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { formatPrice } from "@/lib/utils";
 
@@ -103,6 +103,7 @@ export default function ProductsManager() {
   const [creating, setCreating] = useState(false);
   const [form, setForm] = useState<FormState>(emptyForm);
   const [saving, setSaving] = useState(false);
+  const [generating, setGenerating] = useState(false);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -168,6 +169,34 @@ export default function ProductsManager() {
     }
   };
 
+  const generateDescription = async () => {
+    if (!form.name) {
+      setError("Enter a product name first so AI can write a description.");
+      return;
+    }
+    setGenerating(true);
+    setError("");
+    try {
+      const res = await fetch("/api/ai-product-description", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          brand: form.brand,
+          category: form.category,
+          tags: form.tags.split(",").map((t) => t.trim()).filter(Boolean),
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to generate description");
+      const data = await res.json();
+      setForm((f) => ({ ...f, description: data.description }));
+    } catch {
+      setError("Couldn't generate a description. Please try again.");
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this product? This cannot be undone.")) return;
     setError("");
@@ -183,7 +212,7 @@ export default function ProductsManager() {
   return (
     <div>
       <div className="flex items-center justify-between gap-3">
-        <p className="text-sm text-dark/50">{products.length} product{products.length === 1 ? "" : "s"} in catalog</p>
+        <p className="text-sm text-fg/50">{products.length} product{products.length === 1 ? "" : "s"} in catalog</p>
         <Button size="sm" onClick={startCreate}>
           <Plus size={15} />
           Add product
@@ -195,12 +224,12 @@ export default function ProductsManager() {
       )}
 
       {creating && (
-        <form onSubmit={handleSubmit} className="mt-4 space-y-3 rounded-2xl border border-dark/10 bg-white p-5">
+        <form onSubmit={handleSubmit} className="mt-4 space-y-3 rounded-2xl border border-dark/10 bg-surface p-5">
           <div className="flex items-center justify-between">
-            <h2 className="font-display text-base font-bold text-dark">
+            <h2 className="font-display text-base font-bold text-fg">
               {editing ? "Edit product" : "New product"}
             </h2>
-            <button type="button" onClick={cancelForm} className="text-dark/40 hover:text-dark">
+            <button type="button" onClick={cancelForm} className="text-fg/40 hover:text-fg">
               <X size={18} />
             </button>
           </div>
@@ -227,16 +256,27 @@ export default function ProductsManager() {
           <Field label="Sizes (comma separated)" value={form.sizes} onChange={(v) => setForm((f) => ({ ...f, sizes: v }))} />
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-dark/60">Description</label>
+            <div className="mb-1 flex items-center justify-between">
+              <label className="block text-xs font-medium text-fg/60">Description</label>
+              <button
+                type="button"
+                onClick={generateDescription}
+                disabled={generating}
+                className="flex items-center gap-1 text-xs font-semibold text-primary hover:underline disabled:opacity-50"
+              >
+                <Sparkles size={12} />
+                {generating ? "Generating…" : "Generate with AI"}
+              </button>
+            </div>
             <textarea
               value={form.description}
               onChange={(e) => setForm((f) => ({ ...f, description: e.target.value }))}
               rows={3}
-              className="w-full rounded-xl border border-dark/15 px-3 py-2.5 text-sm text-dark placeholder:text-dark/30 focus:border-primary/50 focus:outline-none"
+              className="w-full rounded-xl border border-dark/15 px-3 py-2.5 text-sm text-fg placeholder:text-fg/30 focus:border-primary/50 focus:outline-none"
             />
           </div>
 
-          <label className="flex items-center gap-2 text-sm text-dark/70">
+          <label className="flex items-center gap-2 text-sm text-fg/70">
             <input
               type="checkbox"
               checked={form.isNew}
@@ -257,14 +297,14 @@ export default function ProductsManager() {
         </form>
       )}
 
-      <div className="mt-4 overflow-hidden rounded-2xl border border-dark/10 bg-white">
+      <div className="mt-4 overflow-hidden rounded-2xl border border-dark/10 bg-surface">
         {loading ? (
-          <p className="p-8 text-center text-sm text-dark/40">Loading products…</p>
+          <p className="p-8 text-center text-sm text-fg/40">Loading products…</p>
         ) : products.length === 0 ? (
-          <p className="p-8 text-center text-sm text-dark/40">No products yet. Add your first one.</p>
+          <p className="p-8 text-center text-sm text-fg/40">No products yet. Add your first one.</p>
         ) : (
           <table className="w-full text-left text-sm">
-            <thead className="bg-dark/5 text-xs uppercase tracking-wide text-dark/50">
+            <thead className="bg-dark/5 text-xs uppercase tracking-wide text-fg/50">
               <tr>
                 <th className="px-4 py-3">Product</th>
                 <th className="px-4 py-3">Category</th>
@@ -280,26 +320,26 @@ export default function ProductsManager() {
                     <div className="flex items-center gap-2.5">
                       <span className="text-xl">{p.emoji}</span>
                       <div>
-                        <p className="font-medium text-dark">{p.name}</p>
-                        <p className="text-xs text-dark/40">{p.brand}</p>
+                        <p className="font-medium text-fg">{p.name}</p>
+                        <p className="text-xs text-fg/40">{p.brand}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="px-4 py-3 capitalize text-dark/60">{p.category}</td>
-                  <td className="px-4 py-3 text-dark/70">{formatPrice(p.price)}</td>
-                  <td className="px-4 py-3 text-dark/70">{p.rating.toFixed(1)} ★</td>
+                  <td className="px-4 py-3 capitalize text-fg/60">{p.category}</td>
+                  <td className="px-4 py-3 text-fg/70">{formatPrice(p.price)}</td>
+                  <td className="px-4 py-3 text-fg/70">{p.rating.toFixed(1)} ★</td>
                   <td className="px-4 py-3">
                     <div className="flex justify-end gap-1.5">
                       <button
                         onClick={() => startEdit(p)}
-                        className="rounded-lg p-2 text-dark/50 hover:bg-dark/5 hover:text-dark"
+                        className="rounded-lg p-2 text-fg/50 hover:bg-dark/5 hover:text-fg"
                         aria-label="Edit"
                       >
                         <Pencil size={15} />
                       </button>
                       <button
                         onClick={() => handleDelete(p.id)}
-                        className="rounded-lg p-2 text-dark/50 hover:bg-primary/10 hover:text-primary"
+                        className="rounded-lg p-2 text-fg/50 hover:bg-primary/10 hover:text-primary"
                         aria-label="Delete"
                       >
                         <Trash2 size={15} />
@@ -337,7 +377,7 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label className="mb-1 block text-xs font-medium text-dark/60">{label}</label>
+      <label className="mb-1 block text-xs font-medium text-fg/60">{label}</label>
       <input
         type={type}
         step={step}
@@ -345,7 +385,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-dark/15 px-3 py-2.5 text-sm text-dark placeholder:text-dark/30 focus:border-primary/50 focus:outline-none"
+        className="w-full rounded-xl border border-dark/15 px-3 py-2.5 text-sm text-fg placeholder:text-fg/30 focus:border-primary/50 focus:outline-none"
       />
     </div>
   );
@@ -364,11 +404,11 @@ function SelectField({
 }) {
   return (
     <div>
-      <label className="mb-1 block text-xs font-medium text-dark/60">{label}</label>
+      <label className="mb-1 block text-xs font-medium text-fg/60">{label}</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-dark/15 bg-white px-3 py-2.5 text-sm text-dark focus:border-primary/50 focus:outline-none"
+        className="w-full rounded-xl border border-dark/15 bg-surface px-3 py-2.5 text-sm text-fg focus:border-primary/50 focus:outline-none"
       >
         {options.map((o) => (
           <option key={o} value={o} className="capitalize">

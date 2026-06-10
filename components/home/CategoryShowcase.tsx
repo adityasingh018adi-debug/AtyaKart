@@ -35,7 +35,7 @@ export default function CategoryShowcase() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="flex items-end justify-between">
-        <h2 className="font-heading text-2xl font-extrabold tracking-tight text-dark sm:text-3xl">
+        <h2 className="font-heading text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
           Shop by Edit
         </h2>
       </div>

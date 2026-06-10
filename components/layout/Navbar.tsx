@@ -8,6 +8,7 @@ import { useSession, signOut } from "next-auth/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 function AccountMenu() {
   const { data: session, status } = useSession();
@@ -21,7 +22,7 @@ function AccountMenu() {
     return (
       <Link
         href="/login"
-        className="flex items-center gap-1.5 rounded-full border border-dark/15 px-3.5 py-2 text-sm font-semibold text-dark hover:border-dark/40"
+        className="flex items-center gap-1.5 rounded-full border border-dark/15 px-3.5 py-2 text-sm font-semibold text-fg hover:border-dark/40"
       >
         <User size={16} />
         <span className="hidden sm:inline">Sign in</span>
@@ -49,16 +50,16 @@ function AccountMenu() {
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute right-0 z-50 mt-2 w-56 rounded-2xl border border-dark/10 bg-white p-2 shadow-lg">
+          <div className="absolute right-0 z-50 mt-2 w-56 rounded-2xl border border-dark/10 bg-surface p-2 shadow-lg">
             <div className="px-3 py-2">
-              <p className="truncate text-sm font-semibold text-dark">{session.user.name ?? "Welcome"}</p>
-              <p className="truncate text-xs text-dark/40">{session.user.email ?? session.user.id}</p>
+              <p className="truncate text-sm font-semibold text-fg">{session.user.name ?? "Welcome"}</p>
+              <p className="truncate text-xs text-fg/40">{session.user.email ?? session.user.id}</p>
             </div>
             {session.user.role === "ADMIN" && (
               <Link
                 href="/admin"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-dark/70 hover:bg-primary/5 hover:text-primary"
+                className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-fg/70 hover:bg-primary/5 hover:text-primary"
               >
                 <ShieldCheck size={16} />
                 Admin Panel
@@ -69,7 +70,7 @@ function AccountMenu() {
                 setOpen(false);
                 signOut({ callbackUrl: "/" });
               }}
-              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-sm font-medium text-dark/70 hover:bg-dark/5"
+              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-left text-sm font-medium text-fg/70 hover:bg-dark/5"
             >
               <LogOut size={16} />
               Sign out
@@ -99,16 +100,16 @@ function SearchBar() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full max-w-md items-center gap-2 rounded-full border border-dark/15 bg-white px-4 py-2 text-sm text-dark/50 focus-within:border-primary/50"
+      className="flex w-full max-w-md items-center gap-2 rounded-full border border-dark/15 bg-surface px-4 py-2 text-sm text-fg/50 focus-within:border-primary/50"
     >
-      <button type="submit" aria-label="Search" className="text-dark/40 hover:text-primary">
+      <button type="submit" aria-label="Search" className="text-fg/40 hover:text-primary">
         <Search size={16} />
       </button>
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for clothing, brands and more"
-        className="w-full bg-transparent text-dark placeholder:text-dark/40 focus:outline-none"
+        className="w-full bg-transparent text-fg placeholder:text-fg/40 focus:outline-none"
       />
     </form>
   );
@@ -134,19 +135,19 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
         </button>
 
         <Link href="/" className="font-heading text-2xl font-extrabold tracking-tight text-primary">
-          Atya<span className="text-dark">Kart</span>
+          Atya<span className="text-fg">Kart</span>
         </Link>
 
         <Link
           href="/"
-          className="ml-1 hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold text-dark/70 transition hover:bg-dark/5 hover:text-primary lg:flex"
+          className="ml-1 hidden items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold text-fg/70 transition hover:bg-dark/5 hover:text-primary lg:flex"
         >
           <Home size={16} />
           Home
         </Link>
 
         <div className="ml-2 hidden flex-1 items-center lg:flex">
-          <Suspense fallback={<div className="h-9 w-full max-w-md rounded-full border border-dark/15 bg-white" />}>
+          <Suspense fallback={<div className="h-9 w-full max-w-md rounded-full border border-dark/15 bg-surface" />}>
             <SearchBar />
           </Suspense>
         </div>
@@ -161,6 +162,8 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
             <Sparkles size={16} />
             AI Fitting Room
           </button>
+
+          <ThemeToggle />
 
           <Link href="/wishlist" className="relative rounded-full p-2.5 hover:bg-dark/5" aria-label="Wishlist">
             <Heart size={20} />
@@ -202,7 +205,7 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
 
       {open && (
         <nav className="flex flex-col gap-3 border-t border-dark/10 bg-background px-4 py-3 lg:hidden">
-          <Suspense fallback={<div className="h-9 w-full rounded-full border border-dark/15 bg-white" />}>
+          <Suspense fallback={<div className="h-9 w-full rounded-full border border-dark/15 bg-surface" />}>
             <SearchBar />
           </Suspense>
           {[
@@ -215,7 +218,7 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-3 py-2 text-sm font-semibold text-dark hover:bg-dark/5"
+              className="rounded-md px-3 py-2 text-sm font-semibold text-fg hover:bg-dark/5"
               onClick={() => setOpen(false)}
             >
               {link.label}

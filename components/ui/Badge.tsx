@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 const palette: Record<string, string> = {
   BESTSELLER: "bg-dark text-white",
   NEW: "bg-emerald-600 text-white",
-  TRENDING: "bg-accent text-dark",
+  TRENDING: "bg-accent text-fg",
   PREMIUM: "bg-violet-700 text-white",
   "ECO-FRIENDLY": "bg-green-700 text-white",
   "PARTY WEAR": "bg-fuchsia-600 text-white",

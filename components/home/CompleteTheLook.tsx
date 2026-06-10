@@ -19,7 +19,7 @@ export default function CompleteTheLook() {
       subtitle="Pieces that pair perfectly — styled by the AtyaKart edit team."
       products={looks}
       accent={
-        <span className="flex items-center gap-1 rounded-full bg-dark/5 px-2.5 py-1 text-xs font-bold text-dark/60">
+        <span className="flex items-center gap-1 rounded-full bg-dark/5 px-2.5 py-1 text-xs font-bold text-fg/60">
           <Shirt size={13} />
           Styled sets
         </span>

@@ -19,17 +19,17 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:px-8">
       <aside className="hidden w-56 shrink-0 lg:block">
-        <div className="sticky top-24 rounded-2xl border border-dark/10 bg-white p-4">
-          <p className="px-2 text-xs font-semibold uppercase tracking-wide text-dark/40">
+        <div className="sticky top-24 rounded-2xl border border-dark/10 bg-surface p-4">
+          <p className="px-2 text-xs font-semibold uppercase tracking-wide text-fg/40">
             Admin Panel
           </p>
-          <p className="mb-4 px-2 text-sm font-semibold text-dark">{session.user.name ?? session.user.email}</p>
+          <p className="mb-4 px-2 text-sm font-semibold text-fg">{session.user.name ?? session.user.email}</p>
           <nav className="space-y-1">
             {navItems.map(({ href, label, icon: Icon }) => (
               <Link
                 key={href}
                 href={href}
-                className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-dark/70 transition hover:bg-primary/5 hover:text-primary"
+                className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-fg/70 transition hover:bg-primary/5 hover:text-primary"
               >
                 <Icon size={16} />
                 {label}
@@ -38,7 +38,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </nav>
           <Link
             href="/"
-            className="mt-4 flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-dark/50 transition hover:bg-dark/5"
+            className="mt-4 flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-fg/50 transition hover:bg-dark/5"
           >
             <ArrowLeft size={16} />
             Back to store

@@ -18,6 +18,8 @@ const columns = [
       { label: "Shipping & Returns", href: "/shipping-returns" },
       { label: "Size Guide", href: "/size-guide" },
       { label: "Contact Us", href: "/contact" },
+      { label: "AtyaCoins Rewards", href: "/rewards" },
+      { label: "Style Quiz", href: "/style-quiz" },
     ],
   },
   {
@@ -26,6 +28,7 @@ const columns = [
       { label: "Our Story", href: "/about" },
       { label: "Careers", href: "/careers" },
       { label: "AI Fitting Room", href: "/ai-fitting-room" },
+      { label: "AI Outfit Builder", href: "/outfit-builder" },
       { label: "Sustainability", href: "/sustainability" },
     ],
   },

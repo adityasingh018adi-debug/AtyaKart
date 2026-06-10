@@ -19,13 +19,13 @@ export default function InfoPage({
           <Icon size={22} />
         </span>
         <div>
-          <h1 className="font-heading text-2xl font-extrabold tracking-tight text-dark sm:text-3xl">
+          <h1 className="font-heading text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
             {title}
           </h1>
-          <p className="text-sm text-dark/50">{subtitle}</p>
+          <p className="text-sm text-fg/50">{subtitle}</p>
         </div>
       </div>
-      <div className="prose prose-sm mt-8 max-w-none space-y-6 text-dark/70 [&_h2]:font-heading [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-dark [&_li]:list-disc [&_li]:ml-5 [&_p]:leading-relaxed">
+      <div className="prose prose-sm mt-8 max-w-none space-y-6 text-fg/70 [&_h2]:font-heading [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-fg [&_li]:list-disc [&_li]:ml-5 [&_p]:leading-relaxed">
         {children}
       </div>
     </div>

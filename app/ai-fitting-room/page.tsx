@@ -26,8 +26,8 @@ export default function AIFittingRoomPage() {
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <s.icon size={18} />
             </span>
-            <p className="mt-3 font-semibold text-dark">{s.title}</p>
-            <p className="mt-1 text-sm text-dark/60">{s.text}</p>
+            <p className="mt-3 font-semibold text-fg">{s.title}</p>
+            <p className="mt-1 text-sm text-fg/60">{s.text}</p>
           </div>
         ))}
       </div>

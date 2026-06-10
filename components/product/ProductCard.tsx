@@ -10,6 +10,7 @@ import { useStore } from "@/lib/store";
 import { useToast } from "@/components/ui/Toast";
 import { formatPrice, cn } from "@/lib/utils";
 import Badge from "@/components/ui/Badge";
+import ScarcitySignal from "@/components/product/ScarcitySignal";
 
 const BURST_PARTICLES = Array.from({ length: 6 });
 
@@ -47,7 +48,7 @@ export default function ProductCard({ product }: { product: Product }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformPerspective: 900 }}
-      className="group relative overflow-hidden rounded-2xl border border-dark/10 bg-white shadow-md shadow-dark/5 transition-shadow duration-300 will-change-transform hover:shadow-2xl hover:shadow-dark/15"
+      className="group relative overflow-hidden rounded-2xl border border-dark/10 bg-surface shadow-md shadow-dark/5 transition-shadow duration-300 will-change-transform hover:shadow-2xl hover:shadow-dark/15"
     >
       <Link href={`/product/${product.id}`}>
         <div className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-[#f1ede7] to-[#e7e1d8]">
@@ -93,7 +94,7 @@ export default function ProductCard({ product }: { product: Product }) {
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 500, damping: 15 }}
         >
-          <Heart size={17} className={cn(wishlisted ? "fill-primary text-primary" : "text-dark/50")} />
+          <Heart size={17} className={cn(wishlisted ? "fill-primary text-primary" : "text-fg/50")} />
         </motion.span>
 
         <AnimatePresence>
@@ -119,19 +120,20 @@ export default function ProductCard({ product }: { product: Product }) {
       </button>
 
       <Link href={`/product/${product.id}`} className="block space-y-1.5 p-4">
-        <p className="text-[11px] font-semibold uppercase tracking-wide text-dark/40">{product.brand}</p>
-        <p className="line-clamp-1 text-sm font-bold text-dark">{product.name}</p>
-        <div className="flex items-center gap-1 text-xs text-dark/50">
+        <p className="text-[11px] font-semibold uppercase tracking-wide text-fg/40">{product.brand}</p>
+        <p className="line-clamp-1 text-sm font-bold text-fg">{product.name}</p>
+        <div className="flex items-center gap-1 text-xs text-fg/50">
           <span className="flex items-center gap-0.5 rounded bg-emerald-700 px-1.5 py-0.5 font-semibold text-white">
             {product.rating} <Star size={10} className="fill-white" />
           </span>
           <span>({product.reviewCount.toLocaleString("en-IN")})</span>
         </div>
         <div className="flex items-baseline gap-2">
-          <span className="text-base font-extrabold text-dark">{formatPrice(product.price)}</span>
-          <span className="text-xs text-dark/40 line-through">{formatPrice(product.originalPrice)}</span>
+          <span className="text-base font-extrabold text-fg">{formatPrice(product.price)}</span>
+          <span className="text-xs text-fg/40 line-through">{formatPrice(product.originalPrice)}</span>
           <span className="text-xs font-bold text-primary">{product.discountPercent}% off</span>
         </div>
+        <ScarcitySignal id={product.id} />
       </Link>
     </motion.div>
   );

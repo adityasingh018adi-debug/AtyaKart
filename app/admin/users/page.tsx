@@ -9,12 +9,12 @@ export default async function AdminUsersPage() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-bold text-dark">Users</h1>
-      <p className="mt-1 text-sm text-dark/50">{users.length} registered user{users.length === 1 ? "" : "s"}.</p>
+      <h1 className="font-display text-2xl font-bold text-fg">Users</h1>
+      <p className="mt-1 text-sm text-fg/50">{users.length} registered user{users.length === 1 ? "" : "s"}.</p>
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-dark/10 bg-white">
+      <div className="mt-6 overflow-hidden rounded-2xl border border-dark/10 bg-surface">
         <table className="w-full text-left text-sm">
-          <thead className="bg-dark/5 text-xs uppercase tracking-wide text-dark/50">
+          <thead className="bg-dark/5 text-xs uppercase tracking-wide text-fg/50">
             <tr>
               <th className="px-4 py-3">Name</th>
               <th className="px-4 py-3">Email</th>
@@ -26,17 +26,17 @@ export default async function AdminUsersPage() {
           <tbody>
             {users.map((user) => (
               <tr key={user.id} className="border-t border-dark/5">
-                <td className="px-4 py-3 font-medium text-dark">{user.name ?? "—"}</td>
-                <td className="px-4 py-3 text-dark/60">{user.email ?? "—"}</td>
-                <td className="px-4 py-3 text-dark/60">{user.phone ?? "—"}</td>
+                <td className="px-4 py-3 font-medium text-fg">{user.name ?? "—"}</td>
+                <td className="px-4 py-3 text-fg/60">{user.email ?? "—"}</td>
+                <td className="px-4 py-3 text-fg/60">{user.phone ?? "—"}</td>
                 <td className="px-4 py-3">
                   {user.role === "ADMIN" ? (
                     <Badge label="ADMIN" className="bg-primary text-white" />
                   ) : (
-                    <span className="text-dark/50">User</span>
+                    <span className="text-fg/50">User</span>
                   )}
                 </td>
-                <td className="px-4 py-3 text-dark/50">
+                <td className="px-4 py-3 text-fg/50">
                   {new Date(user.createdAt).toLocaleDateString()}
                 </td>
               </tr>

@@ -21,9 +21,9 @@ export default function AboutPage() {
       </p>
       <h2>What we stand for</h2>
       <ul>
-        <li><span className="font-semibold text-dark">Fit, solved.</span> Our AI Fitting Room turns a quick photo into a size you can trust.</li>
-        <li><span className="font-semibold text-dark">Fewer returns, less waste.</span> Better sizing means fewer wrong orders and a smaller footprint.</li>
-        <li><span className="font-semibold text-dark">Real stories, real people.</span> From #AtyaKartStyle to verified reviews, our community shapes what we sell.</li>
+        <li><span className="font-semibold text-fg">Fit, solved.</span> Our AI Fitting Room turns a quick photo into a size you can trust.</li>
+        <li><span className="font-semibold text-fg">Fewer returns, less waste.</span> Better sizing means fewer wrong orders and a smaller footprint.</li>
+        <li><span className="font-semibold text-fg">Real stories, real people.</span> From #AtyaKartStyle to verified reviews, our community shapes what we sell.</li>
       </ul>
       <p>We&apos;re just getting started — thanks for being part of the journey.</p>
     </InfoPage>

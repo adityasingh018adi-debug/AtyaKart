@@ -19,16 +19,16 @@ export default function InstagramGallery() {
         <div>
           <div className="flex items-center gap-2">
             <Camera size={20} className="text-primary" />
-            <h2 className="font-heading text-2xl font-extrabold tracking-tight text-dark sm:text-3xl">
+            <h2 className="font-heading text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
               #AtyaKartStyle
             </h2>
           </div>
-          <p className="mt-1 text-sm text-dark/50">Tag us to get featured — real looks from real people.</p>
+          <p className="mt-1 text-sm text-fg/50">Tag us to get featured — real looks from real people.</p>
         </div>
         <a
           href="#"
           onClick={(e) => e.preventDefault()}
-          className="hidden shrink-0 rounded-full border border-dark/15 px-4 py-2 text-sm font-semibold text-dark transition hover:border-dark/40 sm:block"
+          className="hidden shrink-0 rounded-full border border-dark/15 px-4 py-2 text-sm font-semibold text-fg transition hover:border-dark/40 sm:block"
         >
           Follow @atyakart
         </a>

@@ -49,13 +49,13 @@ function LoginForm() {
         <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
           <Sparkles size={22} />
         </div>
-        <h1 className="font-display text-2xl font-bold text-dark">Sign in to AtyaKart</h1>
-        <p className="mt-1 text-sm text-dark/50">
+        <h1 className="font-display text-2xl font-bold text-fg">Sign in to AtyaKart</h1>
+        <p className="mt-1 text-sm text-fg/50">
           Track orders, save your wishlist, and unlock the AI Fitting Room.
         </p>
       </div>
 
-      <div className="rounded-2xl border border-dark/10 bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-dark/10 bg-surface p-6 shadow-sm">
         <Button
           type="button"
           variant="outline"
@@ -74,32 +74,32 @@ function LoginForm() {
 
         <div className="my-5 flex items-center gap-3">
           <div className="h-px flex-1 bg-dark/10" />
-          <span className="text-xs uppercase tracking-wide text-dark/40">or use your phone</span>
+          <span className="text-xs uppercase tracking-wide text-fg/40">or use your phone</span>
           <div className="h-px flex-1 bg-dark/10" />
         </div>
 
         <form onSubmit={handlePhoneSubmit} className="space-y-3">
           <div>
-            <label className="mb-1 block text-xs font-medium text-dark/60">Phone number</label>
+            <label className="mb-1 block text-xs font-medium text-fg/60">Phone number</label>
             <div className="flex items-center gap-2 rounded-xl border border-dark/15 px-3 py-2.5 focus-within:border-primary/50">
-              <Phone size={16} className="text-dark/40" />
+              <Phone size={16} className="text-fg/40" />
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+91 98765 43210"
-                className="w-full bg-transparent text-sm text-dark placeholder:text-dark/30 focus:outline-none"
+                className="w-full bg-transparent text-sm text-fg placeholder:text-fg/30 focus:outline-none"
               />
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-dark/60">Name (first time only)</label>
+            <label className="mb-1 block text-xs font-medium text-fg/60">Name (first time only)</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="What should we call you?"
-              className="w-full rounded-xl border border-dark/15 px-3 py-2.5 text-sm text-dark placeholder:text-dark/30 focus:border-primary/50 focus:outline-none"
+              className="w-full rounded-xl border border-dark/15 px-3 py-2.5 text-sm text-fg placeholder:text-fg/30 focus:border-primary/50 focus:outline-none"
             />
           </div>
 
@@ -110,7 +110,7 @@ function LoginForm() {
           </Button>
         </form>
 
-        <p className="mt-4 text-center text-[11px] leading-relaxed text-dark/40">
+        <p className="mt-4 text-center text-[11px] leading-relaxed text-fg/40">
           No OTP needed for this demo — we&apos;ll create or sign you into your account using
           the phone number you enter.
         </p>

@@ -25,7 +25,7 @@ export default function RecentlyViewed() {
       subtitle="Pick up where you left off."
       products={items}
       accent={
-        <span className="flex items-center gap-1 rounded-full bg-dark/5 px-2.5 py-1 text-xs font-bold text-dark/60">
+        <span className="flex items-center gap-1 rounded-full bg-dark/5 px-2.5 py-1 text-xs font-bold text-fg/60">
           <History size={13} />
           Your history
         </span>

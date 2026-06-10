@@ -58,9 +58,9 @@ export default function FlashSale() {
           </span>
           <div className="flex items-center gap-1.5">
             <TimeBox value={hours} label="hrs" />
-            <span className="font-bold text-dark/30">:</span>
+            <span className="font-bold text-fg/30">:</span>
             <TimeBox value={minutes} label="min" />
-            <span className="font-bold text-dark/30">:</span>
+            <span className="font-bold text-fg/30">:</span>
             <TimeBox value={seconds} label="sec" />
           </div>
         </div>

@@ -24,8 +24,8 @@ export default function ContactPage() {
         {channels.map((c) => (
           <div key={c.label} className="rounded-2xl border border-dark/10 p-4">
             <c.icon size={18} className="text-primary" />
-            <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-dark/40">{c.label}</p>
-            <p className="mt-0.5 text-sm font-medium text-dark">{c.value}</p>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-fg/40">{c.label}</p>
+            <p className="mt-0.5 text-sm font-medium text-fg">{c.value}</p>
           </div>
         ))}
       </div>
@@ -39,14 +39,14 @@ export default function ContactPage() {
       >
         <div className="grid gap-3 sm:grid-cols-2">
           <label className="text-sm">
-            <span className="mb-1 block font-semibold text-dark">Name</span>
+            <span className="mb-1 block font-semibold text-fg">Name</span>
             <input
               required
               className="w-full rounded-xl border border-dark/15 px-3.5 py-2.5 text-sm outline-none focus:border-primary"
             />
           </label>
           <label className="text-sm">
-            <span className="mb-1 block font-semibold text-dark">Email</span>
+            <span className="mb-1 block font-semibold text-fg">Email</span>
             <input
               required
               type="email"
@@ -55,7 +55,7 @@ export default function ContactPage() {
           </label>
         </div>
         <label className="text-sm">
-          <span className="mb-1 block font-semibold text-dark">Message</span>
+          <span className="mb-1 block font-semibold text-fg">Message</span>
           <textarea
             required
             rows={4}

@@ -38,12 +38,12 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
   return (
     <div>
-      <div className="border-b border-dark/10 bg-white">
+      <div className="border-b border-dark/10 bg-surface">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-8 sm:px-6 lg:px-8">
           <span className="text-5xl">{info.emoji}</span>
           <div>
-            <h1 className="font-heading text-3xl font-extrabold tracking-tight text-dark">{info.title}</h1>
-            <p className="mt-1 text-sm text-dark/50">{info.desc}</p>
+            <h1 className="font-heading text-3xl font-extrabold tracking-tight text-fg">{info.title}</h1>
+            <p className="mt-1 text-sm text-fg/50">{info.desc}</p>
           </div>
         </div>
       </div>
