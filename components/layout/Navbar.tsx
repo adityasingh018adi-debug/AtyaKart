@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import Logo from "@/components/ui/Logo";
 
 function AccountMenu() {
   const { data: session, status } = useSession();
@@ -134,8 +135,8 @@ export default function Navbar({ onOpenAI }: { onOpenAI: () => void }) {
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
 
-        <Link href="/" className="font-heading text-2xl font-extrabold tracking-tight text-primary">
-          Atya<span className="text-fg">Kart</span>
+        <Link href="/">
+          <Logo />
         </Link>
 
         <Link

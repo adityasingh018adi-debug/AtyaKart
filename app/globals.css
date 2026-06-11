@@ -27,6 +27,7 @@
   --color-foreground: var(--foreground);
   --font-heading: var(--font-inter);
   --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
 }
 
 body {

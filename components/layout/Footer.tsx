@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Truck, RotateCcw, ShieldCheck, Sparkles } from "lucide-react";
+import { LogoMark } from "@/components/ui/Logo";
 
 const columns = [
   {
@@ -48,9 +49,12 @@ export default function Footer() {
     <footer className="border-t border-dark/10 bg-dark text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-5 lg:px-8">
         <div className="lg:col-span-2">
-          <p className="font-heading text-2xl font-extrabold tracking-tight">
-            Atya<span className="text-accent">Kart</span>
-          </p>
+          <span className="flex items-center gap-2">
+            <LogoMark />
+            <span className="font-heading text-2xl font-extrabold tracking-tight">
+              Atya<span className="text-accent">Kart</span>
+            </span>
+          </span>
           <p className="mt-3 max-w-xs text-sm text-white/60">
             Fashion for Every Story. Premium Indian fashion across Men&apos;s, Women&apos;s, Kids
             and ZenG — sized smarter with AI.
